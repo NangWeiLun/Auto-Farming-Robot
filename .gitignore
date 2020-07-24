@@ -1,0 +1,16 @@
+*.vscode
+*.pb
+*.pbtxt
+*.wav
+*.json
+*.h5
+
+coding/*
+document
+poster
+video and photo/*
+workshop2 further view
+
+!coding/test on pc
+!video and photo/*.jpg
+!*.txt

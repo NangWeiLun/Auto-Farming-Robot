@@ -1,0 +1,46 @@
+installing google-cloud-vision
+pip2 or pip3 also meet problem while installing grpcio
+it cause diconnect every time and ev3 hang sometime
+
+normal install setting pip/pip2/pip3 install google-cloud-vision
+	stop at downloading grpcio 99% then disconnect
+
+with --no-cache-dir
+	download grpcio complete but disconnect when install it
+
+with --ignore-installed --no-dependencies --no-cache-dir
++ pip install --upgrade six
+	progress until installing grpcio but disconnect without complete install
+
+
+install on debian8 jessie the ev3dev stable version
+for python2.7
+	no problem at first but
+	install the major package but then when install it download and install other package
+	halfway it disconnect
+	restart and install again same problem occur
+
+for python3.4
+	successful
+	need to install pip, easy_install pip
+		sudo easy_install3 pip
+	grpc is installed local by default, it come with ev3dev for py3.4
+
+init gcloud
+	disconnect after choose y/n for create engine
+	need to create compute engine to bypass check step
+	
+python2 is required to use from google.cloud import vision
+	ImportError: cannot import name 'cygrpc'
+	to use need to install pyasn1, rsa, cachetools, grpc (my estimation fail, it still need grpc, py2 cannot use)
+		python2 -m pip install pyasn1_modules
+		or
+		follow rex method
+		pip uninstall pyasn1
+		python -m easy_install pyasn1-0.4.2-py2.7.egg
+
+other
+	pip install cancel when downloading ctrl+c will make ev3 disconnect
+	change pip default
+		update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+		update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
